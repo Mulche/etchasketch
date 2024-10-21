@@ -1,8 +1,10 @@
 const container = document.querySelector('.container');
 const DEFAULT_GRID_SIZE = 16;
-const CANVAS_SIZE = 960;
+const CANVAS_SIZE = 400;
 
 let gridSize = DEFAULT_GRID_SIZE;
+
+let drawingMode = true;
 
 // Create Grid
 
@@ -30,7 +32,25 @@ function clearGrid() {
 // Etch-A-Sketch functionality
 
 function changeColor(element) {
-    element.addEventListener('mouseover', () => {element.style.backgroundColor = 'black'})
+    if (drawingMode) {
+        element.addEventListener('mouseover', () => {
+            element.style.backgroundColor = 'rgb(64, 65, 64)';
+        })
+    }
+}
+
+// function changeColor(element) {
+//     element.addEventListener('mouseover', () => {
+//         element.style.backgroundColor = 'rgb(64, 65, 64)';
+//         // element.style.opacity += 0.1;
+//     })
+// }
+
+function toggleDrawingMode(element) {
+    element.addEventListener('click', () => {
+        drawingMode = !drawingMode;
+        console.log('test' + drawingMode);
+    })
 }
 
 
@@ -46,8 +66,8 @@ function clickSetButton() {
         if (inputValue === gridSize) {
             return;
         }
-        if (inputValue < 1 || inputValue > 100) {
-            alert('Enter a number between 1-100!');
+        if (inputValue < 2 || inputValue > 100) {
+            alert('Enter a number between 2-100!');
             return;
         }
         gridSize = inputValue;
@@ -63,4 +83,15 @@ setButton.addEventListener('click', clickSetButton);
 createGrid();
 
 const boxes = document.querySelectorAll('.box');
+
+
+boxes.forEach(toggleDrawingMode);
+
 boxes.forEach(changeColor);
+
+
+// TODO:
+// Add ability to toggle drawing mode (need to fix the way the drawingMode flag works)
+// Add functionality to gradually increase opaqueness with each pass over
+// Fix page sizing and grid shrinking/growing
+// Organize code
