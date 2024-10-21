@@ -7,8 +7,8 @@ body {
     gap: 5px;
     border: 50px solid rgb(143, 44, 44);
     border-radius: 20px;
-    background-color: rgb(39, 40, 34);
-    color: rgb(80, 170, 188);
+    background-color: rgb(100, 100, 100);
+    color: rgb(216, 248, 255);
     margin: 50;
     padding: 50;
     display: flex;
@@ -33,7 +33,5 @@ body {
 
 .box {
     box-sizing: border-box;
-    background-color: rgb(190, 190, 190);
-    /* border: 1px solid black; */
     flex-shrink: 1;
 }
