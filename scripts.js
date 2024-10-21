@@ -7,6 +7,8 @@ function createGrid() {
       box.className = 'box';
       box.style.width = `${CANVAS_SIZE / gridSize}px`;
       box.style.height = `${CANVAS_SIZE / gridSize}px`;
+      box.style.backgroundColor = 'rgb(190, 190, 190)';
+      box.style.opacity = '1';
       container.appendChild(box);
     }
   }
@@ -22,23 +24,29 @@ function clearGrid() {
 // Drawing functions
 
 function changeColor(element) {
-  const handleMouseOver = () => {
-    element.style.backgroundColor = 'rgb(64, 65, 64)';
-  };
-  if (drawingMode) {
-    element.addEventListener('mouseover', handleMouseOver);
-  } else {
-    element.removeEventListener('mouseover', handleMouseOver);
+  function handleMouseOver() {
+    element.style.backgroundColor = 'black';
+    if (element.style.opacity === '1') {
+      // Default opacity reset to 0.11 (rather than 0.1) to prevent opacity from resetting again when it reaches max opacity
+      element.style.opacity = '0.11';
+    } else {
+      let newOpacity = parseFloat(element.style.opacity) + 0.2;
+      element.style.opacity = `${newOpacity}`;
+    }
   }
+  element.addEventListener('mouseover', handleMouseOver);
+  //   if (!drawingMode) {
+  //     return;
+  //   } else {
+  //     element.addEventListener('mouseover', handleMouseOver);
+  //   }
 }
 
-function toggleDrawingMode(element) {
-  element.addEventListener('click', () => {
-    drawingMode = !drawingMode;
-    console.log('drawing mode: ' + drawingMode);
-    boxes.forEach(changeColor);
-  });
-}
+// function toggleDrawingMode(element) {
+//   element.addEventListener('click', () => {
+//     drawingMode = !drawingMode;
+//   });
+// }
 
 // Functions for setting grid size
 
@@ -62,9 +70,10 @@ function handleSubmit(e) {
       }
       inputSize.value = '';
       gridSize = inputValue;
+      size.textContent = `Current Size: ${inputValue}x${inputValue}`;
       clearGrid();
       createGrid();
-      const boxes = document.querySelectorAll('.box');
+      boxes = document.querySelectorAll('.box');
       boxes.forEach(changeColor);
       inputSize.blur();
     }
@@ -76,10 +85,11 @@ function handleSubmit(e) {
 const container = document.querySelector('.container');
 const DEFAULT_GRID_SIZE = 16;
 const CANVAS_SIZE = 400;
-
 let gridSize = DEFAULT_GRID_SIZE;
+const size = document.querySelector('.size');
+let boxes;
 
-let drawingMode = true;
+// let drawingMode = true;
 
 const inputSize = document.querySelector('#inputSize');
 inputSize.addEventListener('keydown', handleSubmit);
@@ -89,7 +99,6 @@ setButton.addEventListener('click', handleSubmit);
 // Create initial grid
 
 createGrid();
-const boxes = document.querySelectorAll('.box');
-boxes.forEach(toggleDrawingMode);
-
+boxes = document.querySelectorAll('.box');
+// boxes.forEach(toggleDrawingMode);
 boxes.forEach(changeColor);
