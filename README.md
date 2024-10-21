@@ -1,1 +1,1 @@
-# etchasketch
+A fun tool that allows the user to interact with a canvas of HTML elements and adjust their CSS by mousing over them. It will function similarly to how an Etch-A-Sketch toy works, allowing the user to draw simple images. The user will also be able to set the size of the grid.
