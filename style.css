@@ -24,7 +24,7 @@ body {
 
 .container {
     padding-bottom: 3%;
-    width: 960px;
+    width: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -33,7 +33,7 @@ body {
 
 .box {
     box-sizing: border-box;
-    background-color: white;
-    border: 1px solid black;
+    background-color: rgb(190, 190, 190);
+    /* border: 1px solid black; */
     flex-shrink: 1;
 }
