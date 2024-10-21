@@ -23,12 +23,15 @@ body {
 }
 
 .container {
-    padding-bottom: 3%;
+    margin-top: 10px;
+    margin-bottom: 10px;
     width: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    border: 2px solid rgb(80, 74, 74);
+    border-radius: 2px;
 }
 
 .box {
