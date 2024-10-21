@@ -1,6 +1,6 @@
 A webpage based program that works similar to Etch-A-Sketch.
 
-FEATURES:
+# FEATURES:
 
 -The default grid size is 16 boxes by 16 boxes.
 
@@ -10,7 +10,7 @@ FEATURES:
 
 -Each mouseover event will darken each box slightly, allowing the use of shading and detail.
 
-ABOUT:
+# ABOUT:
 
 This was a very fun project, but I hit my limit toward the end. I wanted to add in one other piece of functionality that I just could not figure out. I wanted it to be so that if the user clicked while mousing over a "box" element, it would toggle the drawing mode on or off. So basically you could click and it would stop darkening the boxes, allowing to make better drawings. Of course this is not how an Etch-A-Sketch works, but I just thought it would make the program more fun.
 
